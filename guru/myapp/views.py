@@ -19,4 +19,4 @@ def welcome(req):
 def home(req):
 	return HttpResponse('<h1>This is Home Page</h1>')
 def index(req,name,roll):
-	return HttpResponse('<h1>This is ' + name + ' with roll '+ roll + '</h1>')
+	return HttpResponse('<h1>This is ' + name + ' with roll '+ str(roll) + '</h1>')
