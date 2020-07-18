@@ -20,3 +20,7 @@ def home(req):
 	return HttpResponse('<h1>This is Home Page</h1>')
 def index(req,name,roll):
 	return HttpResponse('<h1>This is ' + name + ' with roll '+ str(roll) + '</h1>')
+def hom(req):
+	return render(req,'index.html')
+def register(req):
+	return render(req,'myapp/register.html')
