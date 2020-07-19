@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>table</title>
+	<style type="text/css">
+		body{
+			background-color: #ccc;
+		}
+		table{
+			border-collapse: collapse;
+			text-align: center;
+			font-size: 22px;
+			margin:30px;
+			font-weight: bold;
+		}
+		table{
+			background-color: #fff;
+			border:2px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<table border="1" cellpadding="8px">
+	{% for res in data %}
+	<tr>
+		<td> {{ res }} </td>
+	</tr>
+	{% endfor %}
+	</table>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Faculty Registration</title>
+</head>
+<body>
+	<h1>Faculty Registration </h1>
+	<form method="POST" action="{% url 'fregister' %}">
+		{% csrf_token %}
+		<span>Faculty_Name : </span> <input type="text" name="name"> <br><br>
+		<span>Faculty_ID: </span> <input type="text" name="id"> <br><br>
+		<span>Faculty_Email : </span> <input type="email" name="email"> <br><br>
+		<span>Faculty__Age : </span> <input type="number" name="age"> <br><br>
+		<input type="submit" name="register">
+	</form>
+</body>
+</html>

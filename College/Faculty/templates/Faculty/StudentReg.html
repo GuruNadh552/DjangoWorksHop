@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GURU</title>
+</head>
+<body>
+	<form method="POST" action="{% url 'sreg' %}">
+		{% csrf_token %}
+		Name :  <input type="name" name="name"> <br><br>
+		Password : <input type="password" name="password"> <br><br>
+		Email : <input type="email" name="email"> <br><br>
+		<input type="submit" name="register">
+	</form>
+</body>
+</html>
