@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-# Create your views here.
-
 def display(req):
 	info = {
 		"name" : "GURUNADH",
@@ -29,10 +27,14 @@ def SReg(req):
 		name = req.POST['name']
 		password = req.POST['password']
 		email = req.POST['email']
-		if (name == password):
-			return HttpResponse('<h1> Welcome ' + name + '</h1>')
+		if (len(name) == 0  or len(password) == 0 or len(email) == 0):
+			return render(req,'Faculty/StudentReg.html')
 		else:
-			return HttpResponse('<h1>Invalid Credentials</h1>')
+			if (name == password):
+				return HttpResponse('<h1> Welcome ' + name + '</h1>')
+			else:
+				return HttpResponse('<h1>Invalid Credentials</h1>')
+				#return HttpResponse('<script type="text/javascript"> alert("Invalid Credentials") </script>')
 	return render(req,'Faculty/StudentReg.html')
 
 def table(req,num):
