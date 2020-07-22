@@ -4,3 +4,5 @@ from Action.models import *
 admin.site.register(Student_Form)
 
 admin.site.register(Actor_Form)
+
+admin.site.register(Heroine_Reg)

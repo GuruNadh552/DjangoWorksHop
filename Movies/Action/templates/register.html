@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% block body %}
+<div class="m-4"></div>
+<div class = "container" style="background-color: #ffffff;border: 2px solid #ccc;">
+<form action="{% url 'register' %}" class="m-3" method="POST">
+	{% csrf_token %}
+	<h3 class="text-center text-primary"> *** Register Here *** </h3>
+	<hr>
+	<div class="form-group">
+		<label for="name">Name of the Actress : </label>
+		<input type="text" name="act_name" class="form-control">		
+	</div>
+	<div class="form-group">
+		<label for="name">Age of the Actress : </label>
+		<input type="number" name="act_age" class="form-control">		
+	</div>
+	<div class="form-group">
+		<label for="name">Email of the Actress : </label>
+		<input type="email" name="act_email" class="form-control">		
+	</div>
+	<div class="form-group">
+		<label for="name">Password of the Actress : </label>
+		<input type="Password" name="act_pass" class="form-control">		
+	</div>
+	<div class="form-group">
+		<label for="name">Manager of the Actress : </label>
+		<input type="text" name="act_manager" class="form-control">		
+	</div>
+	<button class="btn btn-primary" type="Submit">Submit</button>
+</form>
+</div>
+{% endblock %}
