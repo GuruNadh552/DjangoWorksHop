@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<div class="m-3"></div>
+	<div class="container">
+		<table class="table-bordered" cellpadding="10" cellspacing="3">
+			<thead>
+				<th>S.NO</th>
+				<th>Comedian Name</th>
+				<th>Comedian Age</th>
+				<th>Comedian Email</th>
+				<th>Comedian Gender</th>
+				<th>Comedan Language</th>
+				<th>Comedian Mobile</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</thead>
+			<tbody>
+				{% for i in data %}
+				<tr>
+					<td>{{ i.id }}</td>
+					<td>{{ i.com_name }}</td>
+					<td>{{ i.com_age }}</td>
+					<td>{{ i.com_email }}</td>
+					<td>{{ i.com_gender }}</td>
+					<td>{{ i.com_lang }}</td>
+					<td>{{ i.com_mobile }}</td>
+					<td><a href = "{% url 'com_edit' i.id %}">Edit</a></td>
+					<td><a href = "{% url 'com_delete' i.id %}">Delete</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}	

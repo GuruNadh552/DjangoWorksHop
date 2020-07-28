@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+
+{% block body %}
+
+<div class="m-2"></div>
+<div class = "container">
+<div class="card bg-dark text-light">
+<form action="{% url 'com_update' data.id %}"  method="POST">
+	{% csrf_token %}
+	<div class="card-header text-center text-light" style="font-size:25px;"> *** Comedian Registration Here *** </div>
+	<div class = "card-body">
+		<div class="form-group">
+			<label for="name">Name of the Comedian : </label>
+			<input type="text" name="name" class="form-control" value={{data.com_name}}>		
+		</div>
+		<div class="form-group">
+			<label for="name">Age of the Comedian : </label>
+			<input type="number" name="age" class="form-control" value={{data.com_age}}>		
+		</div>
+		<div class="form-group">
+			<label for="name">Email of the Comedian : </label>
+			<input type="email" name="email" class="form-control" value={{data.com_email}}>		
+		</div>
+		<div class="form-group">
+			<label for="nof">No. of Movies </label>
+			<input type="number" name="nof_movies" class="form-control" value={{data.com_nof_movies}}>
+		</div>
+		<div class="form-group">
+			<label for="name"> Comedian Gender </label>
+			<select class ="form-control" name="gender">
+					<option value={{data.com_gender}}>{{data.com_gender}}</option>
+					<option value="MALE">MALE</option>
+					<option value="FEMALE">FEMALE</option>
+			</select>	
+		</div>
+		<div class="form-group">
+			<label for="name"> Language </label>
+			<select class ="form-control" name="lang">
+					<option value={{data.com_lang}}>{{data.com_lang}}</option>
+					<option value="TELUGU">TELUGU</option>
+					<option value="HINDI">HINDI</option>
+					<option value="TAMIL">TAMIL</option>
+			</select>	
+		</div>
+		<div class="form-group">
+			<label for="name"> Mobile No : </label>
+			<input type="number" name="mobile" class="form-control" value={{data.com_mobile}}>		
+		</div>
+	</div>
+	<div class = "card-footer">
+	<button class="btn btn-primary" type="Submit">Submit</button>
+	</div>
+</form>
+</div>
+</div>
+
+{% endblock %}

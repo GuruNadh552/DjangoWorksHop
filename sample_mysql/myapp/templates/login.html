@@ -1,0 +1,11 @@
+{% extends 'navbar.html' %}
+{% block body %}
+<div style="margin:10px;padding: 10px;">
+	<form method="POST" action="{% url 'login' %}">
+		 {% csrf_token %}
+		<input type="text" name="user" placeholder="Enter UserName "><br><br>
+		<input type="password" name="pass" placeholder="Enter Password"><br><br>
+		<input type="submit" name="submit" value="submit">
+	</form>
+</div>
+{% endblock %}

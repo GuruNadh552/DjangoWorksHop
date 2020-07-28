@@ -1,0 +1,21 @@
+{% extends 'nav.html' %}
+{% block body %}
+
+<div class="container">
+	<div class="card m-3 bg-dark text-light">
+		<div class="card-header">
+			<h1 class="text-center"> Register Here</h1>
+		</div>
+		<div class="card-body">
+			<form method="POST" action="{% url 'signup' %}">
+				{% csrf_token %}	
+				{{ form.as_p }}			
+		</div>
+		<div class="card-footer">
+			<input type="submit" name="submit" value="submit" class="btn btn-warning">
+		</div>
+		</form>	
+	</div>
+</div>
+
+{% endblock%}

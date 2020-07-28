@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% block body%}
+<div class="m-4"></div>
+<div class = "container">
+<div class="card bg-dark text-light">
+<form action="{% url 'update_data' %}"  method="POST">
+	{% csrf_token %}
+	<div class="card-header text-center text-light" style="font-size:25px;"> *** Update Contact Form Here *** </div>
+	<div class = "card-body">
+		<div class="form-group">
+			<label for="name">Name of the Candidate : </label>
+			<input type="text" name="name" class="form-control" value={{data.c_name}}>		
+		</div>
+		<div class="form-group">
+			<label for="name"> Mobile No : </label>
+			<input type="number" name="mobile" class="form-control" value={{data.c_mobile}}>		
+		</div>
+		<div class="form-group">
+			<label for="name">Email of the Actress : </label>
+			<input type="email" name="email" class="form-control" value={{data.c_email}}>		
+		</div>
+		<div class="form-group">
+			<label for="name"> Gender </label>
+			<select class ="form-control" name="gender" value={{data.c_gender}}>
+					<option></option>
+					<option value="MALE">MALE</option>
+					<option value="FEMALE">FEMALE</option>
+			</select>	
+		</div>
+		<div class="form-group">
+			<label for="name">Complaint : </label>
+			<input type="text" name="comp" value={{data.c_comp}}>	
+		</div>
+	</div>
+	<div class = "card-footer">
+	<button class="btn btn-primary" type="Submit">Update</button>
+	</div>
+</form>
+</div>
+</div>
+{% endblock %}

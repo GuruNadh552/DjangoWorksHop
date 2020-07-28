@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<div class="m-3"></div>
+	<div class="container">
+		<table class="table-bordered" cellpadding="10" cellspacing="3">
+			<thead>
+				<th>S.NO</th>
+				<th>Person Name</th>
+				<th>Person Mobile</th>
+				<th>Person Email</th>
+				<th>Person Gender</th>
+				<th>Person Complaint</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</thead>
+			<tbody>
+				{% for i in data %}
+				<tr>
+					<td>{{ i.id }}</td>
+					<td>{{ i.c_name }}</td>
+					<td>{{ i.c_mobile }}</td>
+					<td>{{ i.c_email }}</td>
+					<td>{{ i.c_gender }}</td>
+					<td>{{ i.c_comp}}</td>
+					<td><a href = "{% url 'edit' i.id %}">Edit</a></td>
+					<td><a href = "{% url 'delete' i.id %}">Delete</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}	

@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DATA SHOW</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>S.No</th>
+			<th>Name</th>
+			<th>Phone</th>
+			<th>Image</th>
+		</tr>
+		{% for i in data %}
+		<tr>
+			<td>{{ i.id }}</td>
+			<td>{{ i.name }}</td>
+			<td>{{ i.mobile }}</td>
+			<td><img src="{{ i.image }}"></td>
+		</tr>
+		{% endfor %}
+	</table>
+</body>
+</html>
