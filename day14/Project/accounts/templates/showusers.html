@@ -1,0 +1,47 @@
+{% extends 'nav.html' %}
+{% block body %}
+<div class="container">
+  {% if messages %}
+  {% for i in messages %}
+  <div class="alert alert-{{i.tags}} m-3">
+    {{i}}
+  </div>
+  {% endfor %}
+  {% endif %}  
+</div>
+  <div class="container">
+  	<div class="card m-3">
+  		<div class="card-header bg-dark text-light text-center">Registered Users</div>
+  		<div class="card-body">
+  			<table class="table table-bordered table-hover table-striped text-center">
+  				<tr>
+            <th>S.No</th>
+  					<th> UserName </th>
+  					<th> First Name </th> 
+            <th>Last Name</th>
+            <th>Email</th>
+            <th colspan="3">Operations</th>
+  				</tr>
+          {% for i in data %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.username }}</td>
+            <td>{{ i.first_name }}</td>
+            <td>{{ i.last_name }}</td>
+            <td>{{ i.email }}</td>
+            <td>
+              <a href="{% url 'edituser' i.id %}"  class="btn btn-outline-primary">Edit</a>
+            </td>
+            <td>
+              <a href="{% url 'deleteuser' i.id %}" class="btn btn-outline-danger">Delete</a>
+            </td>
+            <td>
+              <a href="#" class="btn btn-outline-success">Save</a>
+            </td>
+          </tr>
+          {% endfor %}
+  			</table>
+  		</div>
+  	</div>
+  </div>
+{% endblock%}

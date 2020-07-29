@@ -5,6 +5,7 @@ from django.contrib.auth import *
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 # Create your views here.
 
 def home(req):
@@ -23,8 +24,11 @@ def signin(req):
 		password = req.POST['password']
 		user = authenticate(username=username,password=passw)
 		if(user is not None):
+			messages.success(req,'SuccessFully Login')
 			login(req,user)
-		return redirect('signin')
+		else:
+			messages.warning(req,'Invalid Credentials')
+			return redirect('signin')
 	return render(req,'login.html')
 
 @login_required
@@ -33,6 +37,7 @@ def signout(req):
 	return redirect('home')
 @login_required
 def profile(req):
+	messages.success(req,'SuccessFully Login')
 	user = get_user(req)
 	return render(req,'profile.html',{'user':user})
 @login_required
@@ -43,5 +48,37 @@ def changepass(req):
 		if (form.is_valid()):
 			u = form.save()
 			update_session_auth_hash(req,u)
-			return HttpResponse('Password changesuccess')
+			return redirect('csuccess')
 	return render(req,'changepass.html',{'form':form})
+
+def changesu(req):
+	logout(req)
+	return render(req,'csuccess.html')
+@login_required
+def showusers(req):
+	data = User.objects.all()
+	return render(req,'showusers.html',{'data':data})
+@login_required
+def edituser(req,id):
+	user = User.objects.get(id=id)
+	if (req.method=='POST'):
+		first_name = req.POST['first_name']
+		last_name = req.POST['last_name']
+		username = req.POST['username']
+		email = req.POST['email']
+		user.first_name = first_name
+		user.last_name = last_name
+		user.email = email
+		user.username = username
+		user.save()
+		messages.success(req,'%s is updated SuccessFully'%(username))
+		return redirect('showusers')
+	return render(req,'edituser.html',{'data':user})
+def deleteuser(req,id):
+	user = User.objects.get(id=id)
+	if (req.method=='POST'):
+		user = User.objects.get(id=id)
+		messages.success(req,'%s deleted SuccessFully'%(user.username))
+		user.delete()
+		return redirect('showusers')
+	return render(req,'deleteuser.html',{'user':user})

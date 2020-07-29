@@ -1,0 +1,18 @@
+{% extends 'nav.html' %}
+{% block body %}
+<div class="container">
+	<div class="card m-3">
+		<div class="card-header">Update Data</div>
+		<div class="card-body">
+			<form method="POST" action="{% url 'deleteuser' user.id %}">
+				{% csrf_token %}
+				<h3> Are you Sure Want to Delete </h3>
+		</div>
+		<div class="card-footer">
+			<input type="submit" name="submit" value="Yes" class="btn btn-primary">
+			<a href="{% url 'showusers' %}" class="btn btn-danger btn-lg"> No </a>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

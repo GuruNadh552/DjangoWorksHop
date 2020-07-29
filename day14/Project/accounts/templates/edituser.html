@@ -1,0 +1,32 @@
+{% extends 'nav.html' %}
+{% block body %}
+<div class="container">
+	<div class="card m-3">
+		<div class="card-header">Update Data</div>
+		<div class="card-body">
+			<form method="POST">
+				{% csrf_token %}
+				<div class="form-group">
+					<label>FIRST NAME</label>
+					<input type="text" name="first_name" class="form-control" value={{data.first_name}}>
+				</div>
+				<div class="form-group">
+					<label>LAST NAME</label>
+					<input type="text" name="last_name" class="form-control" value={{data.last_name}}>
+				</div>
+				<div class="form-group">
+					<label>USERNAME</label>
+					<input type="text" name="username" class="form-control" value={{data.username}}>
+				</div>
+				<div class="form-group">
+					<label>email</label>
+					<input type="text" name="email" class="form-control" value={{data.email}}>
+				</div>
+		</div>
+		<div class="card-footer">
+			<input type="submit" name="submit" value="Update" class="btn btn-primary">
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

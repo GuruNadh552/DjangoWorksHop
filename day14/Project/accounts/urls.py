@@ -11,4 +11,8 @@ urlpatterns = [
    path('signout/',auth_views.LogoutView.as_view(template_name='logout.html'),name="signout"),
    path('profile/',views.profile,name="profile"),
    path('changepass/',views.changepass,name="changepass"),
+   path('changesu/',views.changesu,name="csuccess"),
+   path('showusers/',views.showusers,name="showusers"),
+   path('edituser/<int:id>',views.edituser,name="edituser"),
+   path('deleteuser/<int:id>',views.deleteuser,name="deleteuser"),
 ]

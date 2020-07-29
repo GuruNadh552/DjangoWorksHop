@@ -1,8 +1,29 @@
 {% extends 'nav.html' %}
-{% block body %} <br>
- &nbsp; &nbsp;  {{ user.username }} <br>
-  &nbsp; &nbsp;  {{ user.first_name }} <br>
- &nbsp; &nbsp;  {{ user.last_name }} <br>
-  &nbsp; &nbsp; {{ user.email }}
-  &nbsp; &nbsp; {{ user.password }}
+{% block body %}
+
+  <div class="container">
+  	<div class="card m-3">
+  		<div class="card-header bg-dark text-light text-center">Profile</div>
+  		<div class="card-body">
+  			<table class="table text-center">
+  				<tr>
+  					<th> UserName </th>
+  					<td> {{ user.username }} </td> 
+  				</tr>
+  				<tr>
+  					<th> First Name  </th>
+  					<td> {{ user.first_name }} </td> 
+  				</tr>
+  				<tr>
+  					<th> Last Name </th>
+  					<td> {{ user.last_name }} </td> 
+  				</tr>
+  				<tr>
+  					<th> Email Id </th>
+  					<td> {{ user.email }} </td> 
+  				</tr>
+  			</table>
+  		</div>
+  	</div>
+  </div>
 {% endblock%}
