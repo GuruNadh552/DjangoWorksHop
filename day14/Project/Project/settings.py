@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+import django_heroku
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'Project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd4qk8h0fpd24qa',
+        'USER': 'hvdruqyasbvkgv',
+        'PASSWORD': 'e35835a3d086ec8f112f0b192dc9ae785e9d879469e92d34e5cc4f76076d3304',
+        'HOST' : 'ec2-52-86-73-86.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -122,3 +126,5 @@ STATIC_URL = '/static/'
 
 LOGIN_URL = 'signin'
 LOGIN_REDIRECT_URL = 'profile'
+
+django_heroku.settings(locals())

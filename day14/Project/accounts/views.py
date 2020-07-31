@@ -6,6 +6,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+import csv
 # Create your views here.
 
 def home(req):
@@ -54,7 +55,7 @@ def changepass(req):
 def changesu(req):
 	logout(req)
 	return render(req,'csuccess.html')
-@login_required
+
 def showusers(req):
 	data = User.objects.all()
 	return render(req,'showusers.html',{'data':data})
@@ -82,3 +83,15 @@ def deleteuser(req,id):
 		user.delete()
 		return redirect('showusers')
 	return render(req,'deleteuser.html',{'user':user})
+
+def savedata(req):
+	resp = HttpResponse(content_type="text/csv")
+	writer = csv.writer(resp)
+	writer.writerow(['ID','FIRST_NAME','LAST_NAME','EMAIL','USERNAME','LAST_LOGIN','DATE_JOINED'])
+
+	for i in User.objects.all().values_list('id','first_name','last_name','email','username','last_login','date_joined'):
+		writer.writerow(i)
+	resp['Content-Disposition'] = 'attachments; filename="data.csv"'
+	return resp
+
+
